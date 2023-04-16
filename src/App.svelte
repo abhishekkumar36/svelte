@@ -1,11 +1,32 @@
 <script>
-	export let name;
+	let firstName="Abhishek";
+	let lastName="Kumar"
+	$:fullName = `${firstName} ${lastName}`
+	// $:console.log(beltColor)
+	$:{
+		// console.log("Hurray")
+		console.log(firstName);
+		console.log(lastName)
+	}
+	let beltColor = "black";
+	const handleClick = () => {
+		beltColor = "orange";
+	}
+	const handleInput = (e) => {
+		beltColor = e.target.value
+	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+	<h1>{fullName}</h1>
+	<h1 style="color:{beltColor}">{beltColor}   belt </h1>
+	<!-- <button on:click={handleClick}>update color</button> -->
+	<!-- <input type="text" value={beltColor} on:input={handleInput}> -->
+	<input type="text" bind:value={firstName}>
+	<input type="text" bind:value={lastName}>
+
+	<input type="text" bind:value={beltColor}>
+	</main>
 
 <style>
 	main {
